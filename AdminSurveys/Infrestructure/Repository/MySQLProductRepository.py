@@ -19,7 +19,7 @@ class MySQLProductRepository(ProductPort):
             return {"message": "Prodcts found", "status": True, "products": self.response(product)}
 
     def get_product(self, product_id):
-        product = self.db.query(Model).filter(Model.product_id == product_id).first()
+        product = self.db.query(Model).filter(Model.uuid == product_id).first()
         if not product:
             return {"message": "Product not found", "status": False}
         else:

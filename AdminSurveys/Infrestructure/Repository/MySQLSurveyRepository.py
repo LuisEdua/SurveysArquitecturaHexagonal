@@ -1,5 +1,3 @@
-from pyexpat import model
-
 from Database.MySQL import engine, Base, session_local
 from AdminSurveys.Domain.Entity.Survey import Survey
 from AdminSurveys.Domain.Port.SurveyPort import SurveyPort
@@ -37,7 +35,6 @@ class MySQLSurveyRepository(SurveyPort):
         survey.description = description if description is not None else survey.description
         self.db.commit()
         return {"message": "Survey updated", "status": True, "survey":self.response(survey)}
-
 
     def delete_survey(self, survey_id):
         survey = self.db.query(Model).filter(Model.uuid == survey_id).first()
