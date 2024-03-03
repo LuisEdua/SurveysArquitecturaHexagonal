@@ -16,7 +16,7 @@ delete_controller = DeleteController(repository)
 survey_routes = Blueprint('survey_routes', __name__)
 
 
-@survey_routes.route('/<string:user_id>', methods=['GET'])
+@survey_routes.route('/list/<string:user_id>', methods=['GET'])
 def get_surveys(user_id):
     return list_controller.run(user_id)
 
@@ -33,7 +33,7 @@ def create_survey():
 
 @survey_routes.route('/<string:survey_id>', methods = ['PUT'])
 def update_survey(survey_id):
-    return update_controller.run(survey_id)
+    return update_controller.run(request, survey_id)
 
 
 @survey_routes.route('/<string:survey_id>', methods = ['DELETE'])

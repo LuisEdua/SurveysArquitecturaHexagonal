@@ -11,7 +11,7 @@ class MySQLSurveyRepository(SurveyPort):
 
     def list_surveys(self, user_id):
         surveys = self.db.query(Model).filter(Model.user_id == user_id).all()
-        if len(surveys) < 1:
+        if len(surveys) == 0:
             return {"message": "No surveys", "status": False}
         else:
             return {"message": "Surveys found", "status": True, "surveys": [self.response(s) for s in surveys]}
@@ -27,7 +27,7 @@ class MySQLSurveyRepository(SurveyPort):
         model = Model(uuid=survey.uuid, title=survey.title, description=survey.description, user_id=survey.user_id)
         self.db.add(model)
         self.db.commit()
-        return {"message": "Survey added", "status": True, "survey":self.response(model)}
+        return {"message": "Survey added", "status": True, "survey": self.response(model)}
 
     def update_survey(self, survey_id, title, description):
         survey = self.db.query(Model).filter(Model.uuid == survey_id).first()
@@ -44,4 +44,4 @@ class MySQLSurveyRepository(SurveyPort):
 
     @staticmethod
     def response(model: Model):
-        return {"uuid": model.uuid, "title": model.title, "description": model, "user": model.user.user_name}
+        return {"uuid": model.uuid, "title": model.title, "description": model.description, "user": model.user.user_name}
