@@ -3,7 +3,7 @@ from AdminSurveys.Application.UseCase.Product.GetRandomProductUseCase import Get
 from flask import jsonify
 
 
-class GetRandom:
+class GetRandomController:
     def __init__(self, repository: Port):
         self.__use_case = UseCase(repository)
 
