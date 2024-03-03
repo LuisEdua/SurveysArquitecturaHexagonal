@@ -41,4 +41,4 @@ class MySQLProductRepository(ProductPort):
 
     @staticmethod
     def response(model: Model):
-        return {"uuid": model.uuid, "name": model.name, "description": model.description, "survey": model.surver.title}
+        return {"uuid": model.uuid, "name": model.name, "description": model.description, "survey": model.survey.title}

@@ -15,7 +15,7 @@ get_random_controller = GetRandomController(repository)
 product_routes = Blueprint('product_routes', __name__)
 
 
-@product_routes.route('/<string:survey_id>', methods=['GET'])
+@product_routes.route('/list/<string:survey_id>', methods=['GET'])
 def get_all(survey_id: str):
     return list_controller.run(survey_id)
 
