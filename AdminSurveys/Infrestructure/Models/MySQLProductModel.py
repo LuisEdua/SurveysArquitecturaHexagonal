@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship, backref
 from Database.MySQL import Base
-from MySQLSurveyModel import MySQLSurveyModel as Survey
+from AdminSurveys.Infrestructure.Models.MySQLSurveyModel import MySQLSurveyModel as Survey
 
 
 class MySQLProductModel(Base):
@@ -9,5 +9,5 @@ class MySQLProductModel(Base):
     uuid = Column(String(36), primary_key=True)
     name = Column(String(255), nullable=False)
     description = Column(String(255), nullable=False)
-    survey_id = Column(String(36), ForeignKey('surveys.id'))
+    survey_id = Column(String(36), ForeignKey('surveys.uuid'))
     survey = relationship(Survey, backref=backref('products', uselist=True))

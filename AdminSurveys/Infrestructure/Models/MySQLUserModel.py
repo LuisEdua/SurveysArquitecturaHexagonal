@@ -3,7 +3,7 @@ from Database.MySQL import Base
 
 
 class MySQLUserModel(Base):
-    __tablename__ = 'Users'
+    __tablename__ = 'users'
     uuid = Column(String(36), primary_key=True)
     email = Column(String(255), nullable=False, unique=True)
     password = Column(String(255), nullable=False)
