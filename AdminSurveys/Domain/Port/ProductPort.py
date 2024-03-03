@@ -8,6 +8,10 @@ class ProductPort(ABC):
         pass
 
     @abstractmethod
+    def get_random_product(self, survey_id):
+        pass
+
+    @abstractmethod
     def get_product(self, product_id):
         pass
 
@@ -16,5 +20,5 @@ class ProductPort(ABC):
         pass
 
     @abstractmethod
-    def create_product(self, product:Product):
+    def create_product(self, product: Product):
         pass
